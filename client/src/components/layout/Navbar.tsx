@@ -28,9 +28,9 @@ export default function Navbar(props: NavbarProps) {
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.4, ease: "easeOut" }}
-                className="flex justify-between mb-8"
+                className="flex justify-center mb-8"
             >
-                <div className="flex items-center gap-3">
+                <div className="flex items-center  gap-3">
                     <div className="relative flex items-center justify-center w-12 h-12 rounded-2xl bg-primary shadow-lg shadow-primary/30">
                         <ShieldCheck className="size-6 text-primary-foreground" />
                     </div>
@@ -41,7 +41,7 @@ export default function Navbar(props: NavbarProps) {
     }
 
     return (
-        <header className="border-b bg-card/80 backdrop-blur-sm sticky top-0 z-10">
+        <header className="border-b bg-card/80 px-4 shadow-sm border-b py-3 backdrop-blur-sm sticky top-0 z-10">
             <div className="w-full px-6 h-14 flex items-center justify-between">
                 <div className="flex items-center gap-2">
                     <div className="flex items-center justify-center w-8 h-8 rounded-xl bg-primary">

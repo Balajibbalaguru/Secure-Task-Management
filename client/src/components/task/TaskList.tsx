@@ -17,7 +17,7 @@ const FILTERS: { label: string; value: Filter }[] = [
 
 export default function TaskList() {
     const { data: tasks, isLoading, isError } = useTasks();
-    const [filter, setFilter] = useState<Filter>("all");
+    const [filter, setFilter] = useState<Filter>("active");
     const [editTask, setEditTask] = useState<Task | null>(null);
 
     const filtered = (tasks ?? []).filter((t) => {

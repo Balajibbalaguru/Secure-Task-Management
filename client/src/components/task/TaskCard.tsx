@@ -41,7 +41,8 @@ export default function TaskCard({ task, index, onEdit }: TaskCardProps) {
                 opacity: { duration: 0.2 },
                 delay: index * 0.04,
             }}
-            className={`group relative rounded-xl border bg-card p-4 shadow-sm transition-all duration-200 hover:shadow-md ${task.completed
+            onClick={!updateTask.isPending ? toggleComplete : undefined}
+            className={`group relative rounded-xl border bg-card p-4 shadow-sm transition-all duration-200 hover:shadow-md cursor-pointer ${task.completed
                 ? "border-border/50 opacity-70"
                 : "border-border hover:border-primary/30"
                 }`}
@@ -50,7 +51,7 @@ export default function TaskCard({ task, index, onEdit }: TaskCardProps) {
                 {/* Toggle Complete */}
                 <button
                     id={`toggle-task-${task._id}`}
-                    onClick={toggleComplete}
+                    onClick={(e) => { e.stopPropagation(); toggleComplete(); }}
                     disabled={updateTask.isPending}
                     className="mt-0.5 shrink-0 text-muted-foreground hover:text-primary transition-colors duration-150 disabled:opacity-50"
                     aria-label={task.completed ? "Mark incomplete" : "Mark complete"}
@@ -67,12 +68,13 @@ export default function TaskCard({ task, index, onEdit }: TaskCardProps) {
                 {/* Content */}
                 <div className="min-w-0 flex-1">
                     <div className="flex items-center gap-2 flex-wrap">
-                        <p
-                            className={`font-medium leading-snug break-words ${task.completed ? "line-through text-muted-foreground" : "text-foreground"
-                                }`}
+                        <button
+                            onClick={(e) => { e.stopPropagation(); toggleComplete(); }}
+                            disabled={updateTask.isPending}
+                            className={`font-medium leading-snug break-words text-left cursor-pointer disabled:cursor-not-allowed transition-colors duration-150 ${task.completed ? "line-through text-muted-foreground" : "text-foreground hover:text-primary"}`}
                         >
                             {task.title}
-                        </p>
+                        </button>
                         {task.completed && (
                             <span className="inline-flex shrink-0 rounded-full bg-primary/10 px-2 py-0.5 text-xs font-medium text-primary">
                                 Done
@@ -97,7 +99,7 @@ export default function TaskCard({ task, index, onEdit }: TaskCardProps) {
                         size="icon"
                         variant="ghost"
                         className="size-8 hover:bg-accent"
-                        onClick={() => onEdit(task)}
+                        onClick={(e) => { e.stopPropagation(); onEdit(task); }}
                         aria-label="Edit task"
                     >
                         <Pencil className="size-3.5" />
@@ -110,7 +112,7 @@ export default function TaskCard({ task, index, onEdit }: TaskCardProps) {
                             ? "bg-destructive/10 text-destructive hover:bg-destructive hover:text-white"
                             : "hover:bg-destructive/10 hover:text-destructive"
                             }`}
-                        onClick={handleDelete}
+                        onClick={(e) => { e.stopPropagation(); handleDelete(); }}
                         disabled={deleteTask.isPending && deleteTask.variables === task._id}
                         aria-label={confirmDelete ? "Confirm delete" : "Delete task"}
                     >

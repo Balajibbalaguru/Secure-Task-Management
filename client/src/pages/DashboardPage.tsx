@@ -14,7 +14,7 @@ export default function DashboardPage() {
 
     return (
         <div className="h-screen overflow-hidden bg-background">
-            <Toaster position="top-right" richColors closeButton />
+            <Toaster position="top-center" richColors closeButton />
 
             <Navbar variant="app" />
 
