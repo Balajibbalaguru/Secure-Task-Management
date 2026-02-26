@@ -5,7 +5,7 @@ import { z } from "zod";
 import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useMutation } from "@tanstack/react-query";
-import { Eye, EyeOff, Lock, Mail, ShieldCheck, Loader2 } from "lucide-react";
+import { Eye, EyeOff, Lock, Mail, Loader2 } from "lucide-react";
 import axios from "axios";
 
 import { Button } from "@/components/ui/button";
@@ -20,6 +20,7 @@ import {
 } from "@/components/ui/form";
 import { authService } from "@/services/auth.service";
 import { useAuthStore } from "@/stores/auth.store";
+import Navbar from "@/components/layout/Navbar";
 
 const loginSchema = z.object({
     email: z.string().email("Enter a valid email address"),
@@ -28,7 +29,6 @@ const loginSchema = z.object({
 
 type LoginFormValues = z.infer<typeof loginSchema>;
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const containerVariants: any = {
     hidden: { opacity: 0, y: 32 },
     visible: {
@@ -37,8 +37,7 @@ const containerVariants: any = {
         transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
     },
 };
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+// eslint-disable-next-line @typescript-eslint/no-explicit-any`
 const fieldVariants: any = {
     hidden: { opacity: 0, x: -16 },
     visible: (i: number) => ({
@@ -92,19 +91,7 @@ export default function LoginPage() {
                 animate="visible"
                 className="w-full max-w-md"
             >
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.4, ease: "easeOut" }}
-                    className="flex justify-center mb-8"
-                >
-                    <div className="flex items-center gap-3">
-                        <div className="relative flex items-center justify-center w-12 h-12 rounded-2xl bg-primary shadow-lg shadow-primary/30">
-                            <ShieldCheck className="size-6 text-primary-foreground" />
-                        </div>
-                        <span className="text-2xl font-bold tracking-tight">SecureTask</span>
-                    </div>
-                </motion.div>
+                <Navbar variant="logo" />
 
                 <div className="rounded-2xl border bg-card shadow-xl shadow-black/5 p-8 backdrop-blur-sm">
                     <motion.div

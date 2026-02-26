@@ -5,7 +5,7 @@ import { z } from "zod";
 import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useMutation } from "@tanstack/react-query";
-import { Eye, EyeOff, Lock, Mail, User, ShieldCheck, Loader2 } from "lucide-react";
+import { Eye, EyeOff, Lock, Mail, User, Loader2 } from "lucide-react";
 import axios from "axios";
 
 import { Button } from "@/components/ui/button";
@@ -20,6 +20,7 @@ import {
 } from "@/components/ui/form";
 import { authService } from "@/services/auth.service";
 import { useAuthStore } from "@/stores/auth.store";
+import Navbar from "@/components/layout/Navbar";
 
 const registerSchema = z
     .object({
@@ -101,19 +102,7 @@ export default function RegisterPage() {
                 animate="visible"
                 className="w-full max-w-md"
             >
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.4, ease: "easeOut" }}
-                    className="flex justify-center mb-8"
-                >
-                    <div className="flex items-center gap-3">
-                        <div className="flex items-center justify-center w-12 h-12 rounded-2xl bg-primary shadow-lg shadow-primary/30">
-                            <ShieldCheck className="size-6 text-primary-foreground" />
-                        </div>
-                        <span className="text-2xl font-bold tracking-tight">SecureTask</span>
-                    </div>
-                </motion.div>
+                <Navbar variant="logo" />
 
                 <div className="rounded-2xl border bg-card shadow-xl shadow-black/5 p-8 backdrop-blur-sm">
                     <motion.div
