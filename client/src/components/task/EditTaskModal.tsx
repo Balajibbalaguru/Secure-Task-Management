@@ -9,6 +9,7 @@ import {
     DialogContent,
     DialogHeader,
     DialogTitle,
+    DialogDescription,
     DialogFooter,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
@@ -61,6 +62,9 @@ export default function EditTaskModal({ task, onClose }: EditTaskModalProps) {
             <DialogContent className="sm:max-w-md">
                 <DialogHeader>
                     <DialogTitle className="text-xl font-bold">Edit Task</DialogTitle>
+                    <DialogDescription className="sr-only">
+                        Update the details of your task below.
+                    </DialogDescription>
                 </DialogHeader>
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 pt-1">
                     <div className="space-y-1.5">

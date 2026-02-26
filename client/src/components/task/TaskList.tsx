@@ -30,7 +30,7 @@ export default function TaskList() {
     const completedCount = tasks?.filter((t) => t.completed).length ?? 0;
 
     return (
-        <div className="space-y-4">
+        <div className="flex flex-col flex-1 overflow-hidden gap-4">
             {/* Stats row */}
             {!isLoading && totalCount > 0 && (
                 <motion.div
@@ -53,7 +53,7 @@ export default function TaskList() {
             )}
 
             {/* Filter tabs */}
-            <div className="flex gap-1 rounded-lg border bg-muted/30 p-1 w-fit">
+            <div className="flex gap-1 mt-5 rounded-lg border bg-muted/30 p-1 w-fit">
                 {FILTERS.map((f) => (
                     <button
                         key={f.value}
@@ -69,7 +69,7 @@ export default function TaskList() {
                 ))}
             </div>
 
-            <div className="max-h-[calc(100vh-18rem)] overflow-y-auto pr-1 space-y-3">
+            <div className="flex-1 overflow-y-auto px-1 pb-4 space-y-3">
                 {/* Loading skeletons */}
                 {isLoading && (
                     <div className="space-y-3">

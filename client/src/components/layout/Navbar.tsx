@@ -41,7 +41,7 @@ export default function Navbar(props: NavbarProps) {
     }
 
     return (
-        <header className="border-b bg-card/80 px-4 shadow-sm border-b py-3 backdrop-blur-sm sticky top-0 z-10">
+        <header className="border-b bg-card/80 px-4 shadow-sm border-b-2 py-3 backdrop-blur-sm sticky top-0 z-10">
             <div className="w-full px-6 h-14 flex items-center justify-between">
                 <div className="flex items-center gap-2">
                     <div className="flex items-center justify-center w-8 h-8 rounded-xl bg-primary">

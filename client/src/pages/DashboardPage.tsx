@@ -13,12 +13,12 @@ export default function DashboardPage() {
     const [addOpen, setAddOpen] = useState(false);
 
     return (
-        <div className="h-screen overflow-hidden bg-background">
+        <div className="h-screen flex flex-col bg-background">
             <Toaster position="top-center" richColors closeButton />
 
             <Navbar variant="app" />
 
-            <main className="max-w-3xl mx-auto px-4 py-8">
+            <main className="flex-1 overflow-hidden flex flex-col max-w-3xl w-full mx-auto px-6 sm:px-10 pt-8">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -54,6 +54,7 @@ export default function DashboardPage() {
                     initial={{ opacity: 0, y: 24 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.4, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+                    className="flex-1 overflow-hidden flex flex-col"
                 >
                     <TaskList />
                 </motion.div>

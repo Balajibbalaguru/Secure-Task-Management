@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -9,6 +8,7 @@ import {
     DialogContent,
     DialogHeader,
     DialogTitle,
+    DialogDescription,
     DialogFooter,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
@@ -58,6 +58,9 @@ export default function AddTaskModal({ open, onOpenChange }: AddTaskModalProps) 
             <DialogContent className="sm:max-w-md">
                 <DialogHeader>
                     <DialogTitle className="text-xl font-bold">New Task</DialogTitle>
+                    <DialogDescription className="sr-only">
+                        Fill in the details below to create a new task.
+                    </DialogDescription>
                 </DialogHeader>
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 pt-1">
                     <div className="space-y-1.5">
