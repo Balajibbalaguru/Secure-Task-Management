@@ -679,14 +679,3 @@ The backend ships with fully integrated **Swagger UI** for interactive API explo
 
 ---
 
-## 📄 License
-
-This project is licensed under the **ISC License**.
-
----
-
-<div align="center">
-
-Built with ❤️ using **React**, **Express**, **MongoDB**, and **TypeScript**
-
-</div>
