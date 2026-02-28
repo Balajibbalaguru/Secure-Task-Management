@@ -262,19 +262,22 @@ All API responses follow a consistent envelope format:
 | `GET` | `/api/auth/me` | ✅ | Get the current authenticated user |
 
 #### `POST /api/auth/register`
+
+**Request Body:**
 ```json
-// Request Body
 {
-  "name": "Akash",
-  "email": "akash@example.com",
+  "name": "[USER_NAME]",
+  "email": "[EMAIL_ADDRESS]",
   "password": "secret123"
 }
+```
 
-// Response 201
+**Response `201`:**
+```json
 {
   "success": true,
   "data": {
-    "user": { "_id": "...", "name": "Akash", "email": "akash@example.com" },
+    "user": { "_id": "...", "name": "[USER_NAME]", "email": "[EMAIL_ADDRESS]" },
     "accessToken": "eyJhbGci...",
     "refreshToken": "eyJhbGci..."
   }
@@ -282,18 +285,21 @@ All API responses follow a consistent envelope format:
 ```
 
 #### `POST /api/auth/login`
+
+**Request Body:**
 ```json
-// Request Body
 {
-  "email": "akash@example.com",
+  "email": "[EMAIL_ADDRESS]",
   "password": "secret123"
 }
+```
 
-// Response 200
+**Response `200`:**
+```json
 {
   "success": true,
   "data": {
-    "user": { "_id": "...", "name": "Akash", "email": "akash@example.com" },
+    "user": { "_id": "...", "name": "[USER_NAME]", "email": "[EMAIL_ADDRESS]" },
     "accessToken": "eyJhbGci...",
     "refreshToken": "eyJhbGci..."
   }
@@ -304,12 +310,12 @@ All API responses follow a consistent envelope format:
 ```
 Headers: Authorization: Bearer <accessToken>
 ```
+**Response `200`:**
 ```json
-// Response 200
 {
   "success": true,
   "data": {
-    "user": { "_id": "...", "name": "Akash", "email": "akash@example.com" }
+    "user": { "_id": "...", "name": "[USER_NAME]", "email": "[EMAIL_ADDRESS]" }
   }
 }
 ```
@@ -328,8 +334,9 @@ Headers: Authorization: Bearer <accessToken>
 | `DELETE` | `/api/tasks/:id` | Delete a task by ID |
 
 #### `GET /api/tasks`
+
+**Response `200`:**
 ```json
-// Response 200
 {
   "success": true,
   "data": [
@@ -347,14 +354,17 @@ Headers: Authorization: Bearer <accessToken>
 ```
 
 #### `POST /api/tasks`
+
+**Request Body:**
 ```json
-// Request Body
 {
   "title": "Buy groceries",
-  "description": "Milk, eggs, bread"   // optional
+  "description": "Milk, eggs, bread"
 }
+```
 
-// Response 201
+**Response `201`:**
+```json
 {
   "success": true,
   "data": {
@@ -370,24 +380,28 @@ Headers: Authorization: Bearer <accessToken>
 ```
 
 #### `PUT /api/tasks/:id`
+
+**Request Body** *(any combination of fields)*:
 ```json
-// Request Body (any combination of fields)
 {
   "title": "Buy groceries (updated)",
   "description": "Also get juice",
   "completed": true
 }
+```
 
-// Response 200
+**Response `200`:**
+```json
 {
   "success": true,
-  "data": { ... updated task ... }
+  "data": { "...updated task fields..." }
 }
 ```
 
 #### `DELETE /api/tasks/:id`
+
+**Response `200`:**
 ```json
-// Response 200
 {
   "success": true,
   "data": null
